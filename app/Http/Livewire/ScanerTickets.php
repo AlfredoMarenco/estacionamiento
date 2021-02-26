@@ -98,7 +98,8 @@ class ScanerTickets extends Component
         $monthName = Carbon::parse($this->datetime_start)->monthName;
         $year = Carbon::parse($this->datetime_start)->year;
         $cambio = $this->cambio - $this->subTotal;
-        $device = Configuration::find(1)->printer;
+        $config = Configuration::find(1);
+        $device = $config->printer;
         //$this->datetime_start->locale('es_Mx');
         $nameprinter = $device;
         $connector = new WindowsPrintConnector($nameprinter);
@@ -106,7 +107,7 @@ class ScanerTickets extends Component
         $printer->setJustification(Printer::JUSTIFY_CENTER);
         $printer->setTextSize(2, 2);
         $printer->text("Estacionamiento\n");
-        $printer->text("Paseo de Montejo\n");
+        $printer->text($config->company."\n");
         $printer->feed(1);
         $printer->setTextSize(1, 2);
         $printer->qrCode($this->barcode, 1, 10);
@@ -126,7 +127,7 @@ class ScanerTickets extends Component
         $printer->text("Cambio: $" . number_format($cambio, 2) . "\n");
         $printer->setTextSize(1, 1);
         $printer->feed(2);
-        $printer->text("Reglamento del estacionamiento donde se describen todas las reglas que se aplicaran Reglamento del estacionamiento donde se describen todas las reglas que se aplicaran Reglamento del estacionamiento donde se describen todas las reglas que se aplicaran ");
+        $printer->text($config->rules);
         $printer->feed(5);
         $printer->cut();
         $printer->close();

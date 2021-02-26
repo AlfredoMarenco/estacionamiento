@@ -59,7 +59,7 @@ class FormCreateTickets extends Component
         $printer->setJustification(Printer::JUSTIFY_CENTER);
         $printer->setTextSize(2, 2);
         $printer->text("Estacionamiento\n");
-        $printer->text("Paseo de Montejo\n");
+        $printer->text($config->company."\n");
         $printer->feed(1);
         $printer->setTextSize(1, 2);
         $printer->qrCode($barcode, 1, 10);
