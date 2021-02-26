@@ -12,6 +12,7 @@ use Livewire\Component;
 use Illuminate\Support\Str;
 use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
 use Mike42\Escpos\Printer;
+use Psy\Configuration as PsyConfiguration;
 
 class FormCreateTickets extends Component
 {
@@ -49,7 +50,8 @@ class FormCreateTickets extends Component
         $day = Carbon::parse($datetime_start)->day;
         $monthName = Carbon::parse($datetime_start)->monthName;
         $year = Carbon::parse($datetime_start)->year;
-        $device = Configuration::find(1)->printer;
+        $config = Configuration::find(1);
+        $device = $config->printer;
         $datetime_start->locale('es_Mx');
         $nameprinter = $device;
         $connector = new WindowsPrintConnector($nameprinter);
@@ -73,7 +75,7 @@ class FormCreateTickets extends Component
         $printer->text("Hora de ingreso " . $datetime_start . "\n");
         $printer->setTextSize(1, 1);
         $printer->feed(2);
-        $printer->text("Reglamento del estacionamiento donde se describen todas las reglas que se aplicaran Reglamento del estacionamiento donde se describen todas las reglas que se aplicaran Reglamento del estacionamiento donde se describen todas las reglas que se aplicaran ");
+        $printer->text($config->rules);
         $printer->feed(5);
         $printer->cut();
         $printer->close();
