@@ -1,0 +1,18 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+.form-label{
+    @apply block uppercase text-gray-700 text-sm font-bold;
+}
+
+.form-inputs{
+    @apply block bg-gray-200 rounded w-full p-2 text-gray-700 border border-gray-200;
+}
+ .form-inputs:focus{
+    @apply bg-white outline-none  border-blue-500;
+}
+
+.button-green{
+    @apply bg-green-600 mt-5 py-2 w-full rounded-lg text-white font-bold;
+}
