@@ -53,7 +53,7 @@ class PrintController extends Controller
         $printer->cut();
         $printer->close();
 
-        return $ticket;
+        return back();
     }
 
 
