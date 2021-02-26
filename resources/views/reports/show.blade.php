@@ -18,7 +18,8 @@
                         <div class="bg-gray-800 w-full text-center text-white font-bold rounded-t-md mt-4">Total</div>
                         <div class="bg-gray-800 w-full text-center text-white font-bold rounded-t-md mt-4">Fecha de
                             Ingreso</div>
-                        <div class="bg-gray-800 w-full text-center text-white font-bold rounded-t-md mt-4">Fecha de Salida
+                        <div class="bg-gray-800 w-full text-center text-white font-bold rounded-t-md mt-4">Fecha de
+                            Salida
                         </div>
                         <div class="my-6">{{ $ticket->plate }}</div>
                         <div class="my-6">$ {{ number_format($ticket->amount, 2) }}</div>
@@ -35,12 +36,22 @@
                         <div class="bg-gray-800 w-full text-center text-white font-bold rounded-t-md mt-4">Total</div>
                         <div class="bg-gray-800 w-full text-center text-white font-bold rounded-t-md mt-4">Fecha de
                             Ingreso</div>
-                        <div class="bg-gray-800 w-full text-center text-white font-bold rounded-t-md mt-4">Fecha de Salida
+                        <div class="bg-gray-800 w-full text-center text-white font-bold rounded-t-md mt-4">Fecha de
+                            Salida
                         </div>
                         <div class="my-6">{{ $ticket->plate }}</div>
                         <div class="my-6">$ {{ number_format($ticket->amount, 2) }}</div>
                         <div class="my-6">{{ $ticket->datetime_start }}</div>
                         <div class="my-6">{{ $ticket->datetime_end }}</div>
+                        <div class="col-span-4 my-2">
+                            <form action="{{ route('printer.reprint',$ticket) }}" method="POST">
+                                @method('POST')
+                                @csrf
+                                <button type="submit"
+                                    class="bg-gray-600 p-1 rounded-md text-center text-white font-semibold">Re-imprimir
+                                    comprobante</button>
+                            </form>
+                        </div>
                     </div>
                 @endif
             </div>

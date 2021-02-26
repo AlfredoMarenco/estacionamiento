@@ -28,6 +28,7 @@ Route::get('/reports/{id}',[ReportController::class, 'show'])->name('reports.sho
 Route::get('/configurations', [ConfigurationController::class, 'index'])->name('configurations');
 Route::post('configurations/update/{id}', [ConfigurationController::class, 'update'])->name('configuration.update');
 Route::get('/listprint',[ConfigurationController::class, 'getPrinter']);
+Route::post('reprinter/{id}',[PrintController::class,'reprintTicket'])->name('printer.reprint');
 
 
 Route::any('/testapi', function(){
