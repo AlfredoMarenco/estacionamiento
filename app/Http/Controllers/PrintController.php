@@ -38,7 +38,7 @@ class PrintController extends Controller
         $printer->setJustification(Printer::JUSTIFY_CENTER);
         $printer->feed(1);
         $printer->setTextSize(1, 1);
-        $printer->text("Fecha de la copia del comprobante");
+        $printer->text("Fecha de la copia del comprobante"."\n");
         $printer->text("Mérida Yucatán - " . $dayName . " " . $day . " de " . $monthName . " de " . $year . "\n");
         $printer->setJustification(Printer::JUSTIFY_LEFT);
         $printer->feed(1);

@@ -81,14 +81,14 @@ class ScanerTickets extends Component
                 'pagado' => 1,
                 'amount' => $this->subTotal
             ]);
-        Http::patch('https://pruebas-ecdd7-default-rtdb.firebaseio.com/tickets/'.$this->barcode.'.json',
-        [
-            'plate' => $this->plate,
-            'datetime_end' => $this->datetime_end,
-            'pagado' => 1,
-            'amount' => $this->subTotal,
-            'updated_at' => $this->datetime_end
-        ]);
+        // Http::patch('https://pruebas-ecdd7-default-rtdb.firebaseio.com/tickets/'.$this->barcode.'.json',
+        // [
+        //     'plate' => $this->plate,
+        //     'datetime_end' => $this->datetime_end,
+        //     'pagado' => 1,
+        //     'amount' => $this->subTotal,
+        //     'updated_at' => $this->datetime_end
+        // ]);
     }
 
     public function printTicket()

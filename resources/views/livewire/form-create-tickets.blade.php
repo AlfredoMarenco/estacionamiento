@@ -1,5 +1,6 @@
 <div class="mt-5">
     <h1 class="text-3xl text-gray-700">Ingreso de vehiculos</h1>
+        <p class="text-gray-100 bg-red-700 rounded-md text-md font-bold">{{ $mensaje }}</p>
     <div class="form-group">
         <label class="block mb-2" for="">Placa del vehículo</label>
         <input class="form-inputs text-center uppercase" type="text" placeholder="XXX-123" wire:model="plate">

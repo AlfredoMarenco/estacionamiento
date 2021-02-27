@@ -17,6 +17,7 @@ use Psy\Configuration as PsyConfiguration;
 class FormCreateTickets extends Component
 {
     public $plate;
+    public $mensaje = '';
 
     public function render()
     {
@@ -27,7 +28,14 @@ class FormCreateTickets extends Component
         $barcode = Str::random();
         $datetime_start = Carbon::now();
         $user = auth()->user()->id;
-        //Creamos el registro en la base de datos local para tener un respalñd
+
+        $tickets = Ticket::where('plate','=', $this->plate)->where('pagado','=','0')->count();
+        //dd($tickets);
+        if ($tickets > 0) {
+            $this->mensaje = "Esta placa tiene un ticket por cobrar";
+            $this->reset('plate');
+        }else{
+            //Creamos el registro en la base de datos local para tener un respalñd
         $ticket = Ticket::create([
             'barcode' => $barcode,
             'plate' => $this->plate,
@@ -79,7 +87,7 @@ class FormCreateTickets extends Component
         $printer->feed(5);
         $printer->cut();
         $printer->close();
-        $this->reset('plate');
-
+        $this->reset(['mensaje','plate']);
+        }
     }
 }
