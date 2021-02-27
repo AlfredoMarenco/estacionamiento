@@ -79,11 +79,11 @@ class BoxCutForm extends Component
         $printer->text("Mérida Yucatán - " . $dayName . " " . $day . " de " . $monthName . " de " . $year . "\n");
         $printer->setJustification(Printer::JUSTIFY_LEFT);
         $printer->feed(2);
-        $printer->text("Tickets Pagados: ".$pagados. " = ". $totalPagados ."\n");
-        $printer->text("Tickets Cancelados: ".$canceladosRembolsados. " = ". $totalCanceladosRembolsados ."\n");
-        $printer->text("Tickets C. No-Reembolsados: ".$canceladosNoRembolsados. " = ". $totalCanceladosNoRembolsados ."\n");
+        $printer->text("Tickets Pagados: ".$pagados. " = ". number_format($totalPagados) ."\n");
+        $printer->text("Tickets Cancelados: ".$canceladosRembolsados. " = ". number_format($totalCanceladosRembolsados) ."\n");
+        $printer->text("Tickets C. No-Reembolsados: ".$canceladosNoRembolsados. " = ". number_format($totalCanceladosNoRembolsados) ."\n");
         $printer->feed(1);
-        $printer->text("Total del corte: ".$tickets->count(). " = ". $total ."\n");
+        $printer->text("Total del corte: ".$tickets->count(). " = ". number_format($total) ."\n");
         $printer->text("Este corte es el comprobante para realizar el cierre del dia");
         $printer->feed(5);
         $printer->cut();
