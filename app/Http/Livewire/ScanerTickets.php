@@ -32,13 +32,22 @@ class ScanerTickets extends Component
     public function getBarcodeInfo()
     {
         $ticketInfo = Ticket::where('barcode', '=', $this->barcode)->first();
-        if ($ticketInfo->pagado == 0) {
-            $this->barcode = $ticketInfo->barcode;
-            $this->plate = $ticketInfo->plate;
-            $this->datetime_start = $ticketInfo->datetime_start;
-            $this->accion = 'cobrar';
-        } else {
-            $this->accion = 'pagado';
+        switch ($ticketInfo->pagado) {
+            case '0':
+                $this->barcode = $ticketInfo->barcode;
+                $this->plate = $ticketInfo->plate;
+                $this->datetime_start = $ticketInfo->datetime_start;
+                $this->accion = 'cobrar';
+                break;
+            case '1':
+                $this->accion = 'pagado';
+                break;
+            case '2':
+                $this->accion = 'cancelado';
+                break;
+            case '3':
+                $this->accion = 'cancelado';
+                break;
         }
     }
 
@@ -107,7 +116,7 @@ class ScanerTickets extends Component
         $printer->setJustification(Printer::JUSTIFY_CENTER);
         $printer->setTextSize(2, 2);
         $printer->text("Estacionamiento\n");
-        $printer->text($config->company."\n");
+        $printer->text($config->company . "\n");
         $printer->feed(1);
         $printer->setTextSize(1, 2);
         $printer->qrCode($this->barcode, 1, 10);
@@ -156,7 +165,7 @@ class ScanerTickets extends Component
     {
         if ($this->accion  == 'invalido') {
             $this->accion = 'cobrar';
-        } elseif ($this->accion == 'pagado') {
+        } elseif ($this->accion == 'pagado' || $this->accion == 'cancelado') {
             $this->accion = 'escanear';
             $this->barcode = '';
         }

@@ -41,7 +41,7 @@
                     @break
                     @case(1)
                     <div class="flex justify-center bg-green-400 p-3">
-                        <h2 class="text-xl text-indigo-700 font-bold">Orden: {{ $ticket->id }} / Estatus: Completado /
+                        <h2 class="text-xl text-white  font-bold">Orden: {{ $ticket->id }} / Estatus: Completado /
                             Total: $ {{ number_format($ticket->amount, 2) }} </h2>
                     </div>
                     <div class="grid grid-cols-4 gap-3 justify-items-center items-center">

@@ -38,7 +38,6 @@ class BoxCutForm extends Component
         $from = Carbon::parse($this->datetime_start);
         $to = Carbon::parse($this->datetime_end);
         $tickets = Ticket::whereBetween('datetime_start', [$from, $to])->where('pagado', '!=', '0')->get();
-        $tickets->count();
         foreach ($tickets as $ticket) {
             switch ($ticket->pagado) {
                 case '1':
@@ -84,7 +83,7 @@ class BoxCutForm extends Component
         $printer->text("Tickets Cancelados: ".$canceladosRembolsados. " = ". $totalCanceladosRembolsados ."\n");
         $printer->text("Tickets C. No-Reembolsados: ".$canceladosNoRembolsados. " = ". $totalCanceladosNoRembolsados ."\n");
         $printer->feed(1);
-        $printer->text("Total del corte: ".$pagados+$canceladosRembolsados+$canceladosNoRembolsados. " = ". $total ."\n");
+        $printer->text("Total del corte: ".$tickets->count(). " = ". $total ."\n");
         $printer->text("Este corte es el comprobante para realizar el cierre del dia");
         $printer->cut();
         $printer->close();
