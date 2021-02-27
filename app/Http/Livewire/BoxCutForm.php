@@ -85,6 +85,7 @@ class BoxCutForm extends Component
         $printer->feed(1);
         $printer->text("Total del corte: ".$tickets->count(). " = ". $total ."\n");
         $printer->text("Este corte es el comprobante para realizar el cierre del dia");
+        $printer->feed(5);
         $printer->cut();
         $printer->close();
         $this->reset(['datetime_start','datetime_end']);
