@@ -37,16 +37,38 @@
                                             <div class="text-sm text-gray-500">{{ $ticket->plate }}</div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
-                                            @if ($ticket->pagado == 1)
+                                            @switch($ticket->pagado)
+                                                @case(0)
+                                                <span
+                                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-orange text-gray-100">
+                                                    Abierto
+                                                </span>
+                                                @break
+                                                @case(1)
                                                 <span
                                                     class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                                                     Pagado
                                                 </span>
-                                            @else
+                                                @break
+                                                @case(2)
                                                 <span
                                                     class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
-                                                    Sin Pagar
+                                                    Cancelado / reembolsado
                                                 </span>
+                                                @break
+                                                @case(3)
+                                                <span
+                                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-400 text-gray-800">
+                                                    Cancelado / no reembolsado
+                                                </span>
+                                                @break
+                                                @default
+
+                                            @endswitch
+                                            @if ($ticket->pagado == 1)
+
+                                            @else
+
                                             @endif
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">

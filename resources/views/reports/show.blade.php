@@ -19,13 +19,12 @@
                         <div class="bg-gray-800 w-full text-center text-white font-bold rounded-t-md mt-4">Total</div>
                         <div class="bg-gray-800 w-full text-center text-white font-bold rounded-t-md mt-4">Fecha de
                             Ingreso</div>
-                        <div class="bg-gray-800 w-full text-center text-white font-bold rounded-t-md mt-4">Fecha de
-                            Salida
+                        <div class="bg-gray-800 w-full text-center text-white font-bold rounded-t-md mt-4">Tiempo desde el ingreso
                         </div>
                         <div class="my-6">{{ $ticket->plate }}</div>
                         <div class="my-6">$ {{ number_format($ticket->amount, 2) }}</div>
                         <div class="my-6">{{ $ticket->datetime_start }}</div>
-                        <div class="my-6">{{ var_dump(Carbon\Carbon::parse($ticket->datetime_start)->diffInMinutes()) }}</div>
+                        <div class="my-6">{{ Carbon\Carbon::parse($ticket->datetime_start)->diffForHumans() }}</div>
                         <div class="col-span-4 text-center my-2 bg-gray-200 w-full">
                             <small>Creada por {{ $ticket->user->name  }}</small>
                         </div>
@@ -69,7 +68,7 @@
                     </div>
                     @break
                     @case(2)
-                    <div class="flex justify-center bg-red-400 p-3">
+                    <div class="flex justify-center bg-red-600 p-3">
                         <h2 class="text-xl text-gray-100 font-bold">Orden: {{ $ticket->id }} / Estatus: Cancelada
                         </h2>
                     </div>

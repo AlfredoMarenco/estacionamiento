@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BoxCutController;
 use App\Http\Controllers\ConfigurationController;
 use App\Http\Controllers\PrintController;
 use App\Http\Controllers\ReportController;
@@ -26,6 +27,7 @@ Route::get('/', function () {
 });
 
 Route::get('/reports',[ReportController::class, 'index'])->name('reports.index');
+Route::get('/boxcut',[BoxCutController::class, 'index'])->name('boxcut.index');
 Route::get('/reports/{id}',[ReportController::class, 'show'])->name('reports.show');
 Route::get('/configurations', [ConfigurationController::class, 'index'])->name('configurations');
 Route::post('configurations/update/{id}', [ConfigurationController::class, 'update'])->name('configuration.update');

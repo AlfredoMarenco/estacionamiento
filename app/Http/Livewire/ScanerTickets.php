@@ -137,6 +137,7 @@ class ScanerTickets extends Component
     public function cancelar()
     {
         $this->accion = 'escanear';
+        $this->reset('barcode');
     }
 
     public function cobrar()
