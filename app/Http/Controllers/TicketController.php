@@ -89,6 +89,7 @@ class TicketController extends Controller
             $printer->setTextSize(1, 1);
             $printer->text("Fecha de la cancelacion" . "\n");
             $printer->text("Mérida Yucatán - " . $dayName . " " . $day . " de " . $monthName . " de " . $year . "\n");
+            $printer->text(Carbon::now()->toTimeString()."\n");
             $printer->setJustification(Printer::JUSTIFY_LEFT);
             $printer->feed(1);
             $printer->text("Placa del carro: " . Str::upper($ticket->plate) . "\n");
