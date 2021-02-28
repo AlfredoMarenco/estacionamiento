@@ -24,13 +24,13 @@ class CarWashFrom extends Component
 
     public function cobrar()
     {
-        $tickets = Ticket::where('plate', '=', $this->plate)->where('pagado', '=', '0')->count();
-        if ($tickets > 0) {
+        // $tickets = Ticket::where('plate', '=', $this->plate)->where('pagado', '=', '0')->count();
+        // if ($tickets > 0) {
             $this->accion = 'cobrar';
-        } else {
-            $this->mensaje = "Este vehiculo no esta en el estacionamiento";
-            $this->reset('plate');
-        }
+        // } else {
+        //     $this->mensaje = "Este vehiculo no esta en el estacionamiento";
+        //     $this->reset('plate');
+        // }
     }
 
     public function cancelar()
@@ -82,7 +82,8 @@ class CarWashFrom extends Component
         $printer->setJustification(Printer::JUSTIFY_LEFT);
         $printer->feed(1);
         $printer->text("Placa del carro: " . Str::upper($this->plate) . "\n");
-        $printer->text("Hora de cobro " . $datetime_start . "\n");
+        $printer->text("Hora de cobro:" . $datetime_start . "\n");
+        $printer->text("Total:" . $ticket->amount . "\n");
         $printer->setTextSize(1, 1);
         $printer->feed(2);
         $printer->text($config->rules);
