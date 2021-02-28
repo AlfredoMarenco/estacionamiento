@@ -83,7 +83,7 @@ class CarWashFrom extends Component
         $printer->feed(1);
         $printer->text("Placa del carro: " . Str::upper($this->plate) . "\n");
         $printer->text("Hora de cobro:" . $datetime_start . "\n");
-        $printer->text("Total:" . $ticket->amount . "\n");
+        $printer->text("Total: $" . number_format($ticket->amount,2) . "\n");
         $printer->setTextSize(1, 1);
         $printer->feed(2);
         $printer->text($config->rules);
