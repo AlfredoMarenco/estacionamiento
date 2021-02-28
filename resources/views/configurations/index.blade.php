@@ -32,7 +32,7 @@
                             <input class="form-inputs" name="price_hours" type="number"
                                 value="{{ $configurations->price_hours }}">
                             <label class="block" for="company">Price ticket lost</label>
-                            <input class="form-inputs" name="price_hours" type="number"
+                            <input class="form-inputs" name="amountLost" type="number"
                                 value="{{ $configurations->amountLost }}">
                         </div>
                         <div class="block mt-6 mb-5 text-center w-full">Cost by fraction intervals</div>

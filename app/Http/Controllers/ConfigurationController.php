@@ -82,6 +82,7 @@ class ConfigurationController extends Controller
         $configurations->printer = $request->printer;
         $configurations->company = $request->company;
         $configurations->price_hours = $request->price_hours;
+        $configurations->amountLost = $request->amountLost;
         $configurations->quarter1 = $request->quarter1;
         $configurations->quarter2 = $request->quarter2;
         $configurations->quarter3 = $request->quarter3;
