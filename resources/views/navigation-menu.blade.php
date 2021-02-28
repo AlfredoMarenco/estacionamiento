@@ -18,9 +18,9 @@
                     <x-jet-nav-link href="{{ route('ticket.lost') }}" :active="request()->routeIs('ticket.lost')">
                         {{ __('Tickets Lost') }}
                     </x-jet-nav-link>
-                    {{-- <x-jet-nav-link href="{{ route('carwash.index') }}" :active="request()->routeIs('carwash.index')">
+                    <x-jet-nav-link href="{{ route('carwash.index') }}" :active="request()->routeIs('carwash.index')">
                         {{ __('Carwash') }}
-                    </x-jet-nav-link> --}}
+                    </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('reports.index') }}" :active="request()->routeIs('reports.index')">
                         {{ __('Reports') }}
                     </x-jet-nav-link>

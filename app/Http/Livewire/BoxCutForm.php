@@ -32,11 +32,13 @@ class BoxCutForm extends Component
         $pagados = 0;
         $canceladosRembolsados = 0;
         $canceladosNoRembolsados = 0;
-        $ticketsPeridodos=0;
+        $ticketsPeridodos = 0;
         $totalPagados = 0;
         $totalCanceladosRembolsados = 0;
         $totalCanceladosNoRembolsados = 0;
-        $totalTicketsPeridodos=0;
+        $totalTicketsPeridodos = 0;
+        $carwash = 0;
+        $totalCarwash = 0;
         $from = Carbon::parse($this->datetime_start);
         $to = Carbon::parse($this->datetime_end);
         $tickets = Ticket::whereBetween('datetime_start', [$from, $to])->where('pagado', '!=', '0')->get();
@@ -57,6 +59,10 @@ class BoxCutForm extends Component
                 case '4':
                     $ticketsPeridodos++;
                     $totalTicketsPeridodos += $ticket->amount;
+                    break;
+                case '5':
+                    $carwash++;
+                    $totalCarwash += $ticket->amount;
                     break;
             }
             $total += $ticket->amount;
@@ -89,6 +95,7 @@ class BoxCutForm extends Component
         $printer->text("Tickets Cancelados: " . $canceladosRembolsados . " = $" . number_format($totalCanceladosRembolsados) . "\n");
         $printer->text("Tickets C. No-Reembolsados: " . $canceladosNoRembolsados . " = $" . number_format($totalCanceladosNoRembolsados) . "\n");
         $printer->text("Tickets Perdidos: " . $ticketsPeridodos . " = $" . number_format($totalTicketsPeridodos) . "\n");
+        $printer->text("Carwash: " . $carwash . " = $" . number_format($totalCarwash) . "\n");
         $printer->feed(1);
         $printer->text("Total del corte: " . $tickets->count() . " = $" . number_format($total) . "\n");
         $printer->text("Este corte es el comprobante para realizar el cierre del dia");

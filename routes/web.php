@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BoxCutController;
+use App\Http\Controllers\CarWashController;
 use App\Http\Controllers\ConfigurationController;
 use App\Http\Controllers\PrintController;
 use App\Http\Controllers\ReportController;
@@ -36,6 +37,7 @@ Route::post('reprinter/{id}',[PrintController::class,'reprintTicket'])->name('pr
 Route::put('cancelticket/{id}',[TicketController::class,'cancel'])->name('ticket.cancel');
 Route::get('ticketslost/',[TicketController::class,'showTicketsLost'])->name('ticket.lost');
 Route::get('ticketslost/{id}',[TicketController::class,'setTicketsLost'])->name('ticket.setlost');
+Route::get('/carwash',[CarWashController::class, 'index'])->name('carwash.index');
 
 // Route::any('/testapi', function(){
 //     $response = Http::post('https://pruebas-ecdd7-default-rtdb.firebaseio.com/.json', [
