@@ -63,8 +63,8 @@ class TicketController extends Controller
         $printer->cut();
         $printer->setJustification(Printer::JUSTIFY_CENTER);
         $printer->setTextSize(2,2);
-        $printer->text("COMPROBANTE DE TICKET");
-        $printer->text("PERDIDO");
+        $printer->text("COMPROBANTE DE TICKET \n");
+        $printer->text("PERDIDO\n");
         $printer->feed(3);
         $printer->setTextSize(1,1);
         $printer->setJustification(Printer::JUSTIFY_LEFT);
@@ -75,8 +75,8 @@ class TicketController extends Controller
         $printer->text("Total: $" . number_format($ticket->amount, 2) . "\n");
         $printer->feed(5);
         $printer->setJustification(Printer::JUSTIFY_CENTER);
-        $printer->text('-------------------------------------');
-        $printer->text('Firma del cliente');
+        $printer->text("-------------------------------------\n");
+        $printer->text("Firma del cliente\n");
         $printer->feed(2);
         $printer->cut();
         $printer->close();
