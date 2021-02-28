@@ -77,7 +77,7 @@ class TicketController extends Controller
         $printer->setJustification(Printer::JUSTIFY_CENTER);
         $printer->text("-------------------------------------\n");
         $printer->text("Firma del cliente\n");
-        $printer->feed(2);
+        $printer->feed(5);
         $printer->cut();
         $printer->close();
         return back();
