@@ -22,7 +22,8 @@ class ConfigurationSeeder extends Seeder
             'quarter2' => 10.00,
             'quarter3' => 15.00,
             'quarter4' => 20.00,
-            'printer' => ''
+            'printer' => '',
+            'amountLost' => 250.00
 
         ]);
     }

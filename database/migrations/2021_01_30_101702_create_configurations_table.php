@@ -23,6 +23,7 @@ class CreateConfigurationsTable extends Migration
             $table->float('quarter4')->default(0);
             $table->string('printer');
             $table->float('price_hours');
+            $table->float('amountLost');
             $table->timestamps();
         });
     }

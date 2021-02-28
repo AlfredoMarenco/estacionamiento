@@ -61,6 +61,11 @@
                                                     class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-400 text-gray-800">
                                                     Cancelado / no reembolsado
                                                 </span>
+                                                @case(4)
+                                                <span
+                                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-black text-gray-100">
+                                                    Ticket Perdido
+                                                </span>
                                                 @break
                                                 @default
 

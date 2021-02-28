@@ -16,7 +16,9 @@
                             <label class="block" for="company">Impresora</label>
                             <select class="appearance-none p-2 w-full block rounded-sm" name="printer">
                                 @for ($i = 0; $i < sizeof($impresoras); $i++)
-                                    <option value="{{$impresoras[$i]['name']}}" {{ $impresoras[$i]['name'] == $configurations->printer ? 'selected' : '' }}>{{$impresoras[$i]['name']}}</option>
+                                    <option value="{{ $impresoras[$i]['name'] }}"
+                                        {{ $impresoras[$i]['name'] == $configurations->printer ? 'selected' : '' }}>
+                                        {{ $impresoras[$i]['name'] }}</option>
                                 @endfor
                             </select>
                         </div>
@@ -29,6 +31,9 @@
                             <label class="block" for="company">Price hours</label>
                             <input class="form-inputs" name="price_hours" type="number"
                                 value="{{ $configurations->price_hours }}">
+                            <label class="block" for="company">Price ticket lost</label>
+                            <input class="form-inputs" name="price_hours" type="number"
+                                value="{{ $configurations->amountLost }}">
                         </div>
                         <div class="block mt-6 mb-5 text-center w-full">Cost by fraction intervals</div>
                         <div class="grid grid-cols-8 mt-2">

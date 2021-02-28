@@ -19,7 +19,7 @@ class CreateTicketsTable extends Migration
             $table->string('plate')->nullable();
             $table->dateTime('datetime_start');
             $table->dateTime('datetime_end')->nullable();
-            $table->enum('pagado', ['si' => 1, 'no' => 0, 'cancelado' => 2,'fueradecancelacion'=>3])->default(0);
+            $table->enum('pagado', ['si' => 1, 'no' => 0, 'cancelado' => 2,'fueradecancelacion'=>3,'perdido'=>4,'carwash' =>5])->default(0);
             $table->float('amount')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

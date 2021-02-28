@@ -34,6 +34,8 @@ Route::post('configurations/update/{id}', [ConfigurationController::class, 'upda
 Route::get('/listprint',[ConfigurationController::class, 'getPrinter']);
 Route::post('reprinter/{id}',[PrintController::class,'reprintTicket'])->name('printer.reprint');
 Route::put('cancelticket/{id}',[TicketController::class,'cancel'])->name('ticket.cancel');
+Route::get('ticketslost/',[TicketController::class,'showTicketsLost'])->name('ticket.lost');
+Route::get('ticketslost/{id}',[TicketController::class,'setTicketsLost'])->name('ticket.setlost');
 
 // Route::any('/testapi', function(){
 //     $response = Http::post('https://pruebas-ecdd7-default-rtdb.firebaseio.com/.json', [

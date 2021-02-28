@@ -105,6 +105,25 @@
                         <div class="my-6">{{ $ticket->datetime_end }}</div>
                     </div>
                     @break
+                    @case(4)
+                    <div class="flex justify-center bg-black p-3">
+                        <h2 class="text-xl text-gray-100 font-bold">Orden: {{ $ticket->id }} / Estatus: Ticket perdido
+                        </h2>
+                    </div>
+                    <div class="grid grid-cols-4 gap-3 justify-items-center items-center">
+                        <div class="bg-gray-800 w-full text-center text-white font-bold rounded-t-md mt-4">Placa</div>
+                        <div class="bg-gray-800 w-full text-center text-white font-bold rounded-t-md mt-4">Total</div>
+                        <div class="bg-gray-800 w-full text-center text-white font-bold rounded-t-md mt-4">Fecha de
+                            Ingreso</div>
+                        <div class="bg-gray-800 w-full text-center text-white font-bold rounded-t-md mt-4">Fecha de
+                            Salida
+                        </div>
+                        <div class="my-6">{{ $ticket->plate }}</div>
+                        <div class="my-6">$ {{ number_format($ticket->amount, 2) }}</div>
+                        <div class="my-6">{{ $ticket->datetime_start }}</div>
+                        <div class="my-6">{{ $ticket->datetime_end }}</div>
+                    </div>
+                    @break
                     @default
 
                 @endswitch
